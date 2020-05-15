@@ -16,19 +16,19 @@ The Minimum Viable Product must be completed in three hours.
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your _Team Lead_ as collaborator on Github.
-- [ ] Clone your forked version of the Repository.
-- [ ] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `firstName-lastName`.
+-   [ x] Create a forked copy of this project.
+-   [ x] Add your _Team Lead_ as collaborator on Github.
+-   [ x] Clone your forked version of the Repository.
+-   [ x] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
+-   [ x] Implement the project on this Branch, committing changes regularly.
+-   [ x] Push commits: git push origin `firstName-lastName`.
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge `firstName-lastName` branch into `master` on your fork. **Please don't make Pull Requests against Lambda's repository**.
-- [ ] Please don't merge your own pull request.
-- [ ] Add your _Team Lead_ as a Reviewer on the Pull-request
-- [ ] Your _Team Lead_ will count the challenge as done by merging the branch into _master_.
+-   [ x] Submit a Pull-Request to merge `firstName-lastName` branch into `master` on your fork. **Please don't make Pull Requests against Lambda's repository**.
+-   [ x] Please don't merge your own pull request.
+-   [ x] Add your _Team Lead_ as a Reviewer on the Pull-request
+-   [ x] Your _Team Lead_ will count the challenge as done by merging the branch into _master_.
 
 ## Commits
 
@@ -38,21 +38,29 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] What is the purpose of using _sessions_?
+-   [ ] What is the purpose of using _sessions_?
 
-- [ ] What does bcrypt do to help us store passwords in a secure manner.
+A: Sessions are used to track authentication and give data to middleware later. Basically, you can store data in between gets and posts inside of a session.
 
-- [ ] What does bcrypt do to slow down attackers?
+-   [ ] What does bcrypt do to help us store passwords in a secure manner.
 
-- [ ] What are the three parts of the JSON Web Token?
+A: bcrypt will hash out a password securely by running it through algorithms and then adding salt. The resulting string is then associated with the password of the user whom made it and becomes available to store inside of database
+
+-   [ ] What does bcrypt do to slow down attackers?
+
+A: It makes it so Rainbow Tables cannot be used efficiently. By running a password through a hashing algorithm multiple times, using the secret as a key, it makes the efficiency of a rainbow table next to null. Even if they were to find the correct hash in their table, it would only reveal another hash, which is far less likely to be in a rainbow table. Rainbow table being a collection of SHA-256 hashes next to their commonly-used plain text passwords (using them makes it possible to break single-round hashes with relative ease)
+
+-   [ ] What are the three parts of the JSON Web Token?
+
+A: header, payload, and signature. (header is the type of token and signature hash, payload is the user data itself, and the signature is the culmination of the type, data, and secret you used to create the hash) If any part of the token is changed, the signature will change and not be able to be checked without throwing a flag.
 
 ## Minimum Viable Product
 
 Implement an User Authentication System. Hash user's passwords before saving them to the database. Use `JSON Web Tokens` or `Sessions and Cookies` to persist authentication across requests.
 
-- [ ] Implement the `register` and `login` functionality inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
-- [ ] Implement the `authenticate` middleware inside `/auth/authenticate-middleware.js`.
-- [ ] Write a **minimum o 2 tests** per API endpoint. Write more tests if you have time.
+-   [ ] Implement the `register` and `login` functionality inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
+-   [ ] Implement the `authenticate` middleware inside `/auth/authenticate-middleware.js`.
+-   [ ] Write a **minimum o 2 tests** per API endpoint. Write more tests if you have time.
 
 **Note**: the database already has the users table, but if you run into issues, the migrations are available.
 
@@ -60,5 +68,5 @@ Implement an User Authentication System. Hash user's passwords before saving the
 
 Build a front end to show the jokes.
 
-- [ ] Add a React client that connects to the API and has pages for `Sign Up`, `Sign In` and showing a list of `Jokes`.
-- [ ] Once you have the functionality down, style it!
+-   [ ] Add a React client that connects to the API and has pages for `Sign Up`, `Sign In` and showing a list of `Jokes`.
+-   [ ] Once you have the functionality down, style it!
