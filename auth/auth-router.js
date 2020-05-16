@@ -30,6 +30,7 @@ router.post("/login", async (req, res, next) => {
         const user = await Users.findBy({
             username: req.body.username,
         });
+
         if (!user) {
             return res.status(401).json("this is in  login post", authError);
         }
@@ -38,9 +39,11 @@ router.post("/login", async (req, res, next) => {
             req.body.password,
             user.password
         );
+
         if (!passwordValid) {
             return res.status(401).json(authError);
         }
+
         const tokenPayload = {
             userId: user.userId,
             userRole: "admin",
