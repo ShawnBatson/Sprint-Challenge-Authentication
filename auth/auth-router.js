@@ -29,7 +29,7 @@ router.post("/login", async (req, res, next) => {
     try {
         const user = await Users.findBy({
             username: req.body.username,
-        });
+        }).first();
 
         if (!user) {
             return res.status(401).json("this is in  login post", authError);
