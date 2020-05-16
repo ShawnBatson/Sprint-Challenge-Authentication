@@ -7,15 +7,15 @@ async function add(user) {
     return findById(id);
 }
 
-async function find() {
+function find() {
     return db("users").select("id", "username", "password");
 }
 
-async function findBy(filter) {
-    return db("users").select("id", "username").where(filter);
+function findBy(filter) {
+    return db("users").select("id", "username", "password").where(filter);
 }
 
-async function findById(id) {
+function findById(id) {
     return db("users").where({ id }).select("id", "username").first();
 }
 

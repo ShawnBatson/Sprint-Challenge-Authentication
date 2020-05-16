@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/register", async (req, res, next) => {
     try {
         const { username } = req.body;
-        const user = await Users.findBy({ username }).first;
+        const user = await Users.findBy({ username }).first();
 
         if (user) {
             return res.status(409).json({ message: "Username already taken" });
@@ -54,7 +54,7 @@ router.post("/login", async (req, res, next) => {
         res.cookie("token", jwt.sign(tokenPayload, "secret and safe"));
 
         res.json({
-            message: `Welcome ${username}`,
+            message: `Welcome`,
         });
     } catch (err) {
         next(err);

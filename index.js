@@ -4,6 +4,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRouter = require("./auth/auth-router");
 const usersRouter = require("./database/users/users_router");
+const jokesRouter = require("./jokes/jokes-router");
+const restrict = require("./auth/authenticate-middleware");
 
 const server = express();
 const PORT = process.env.PORT || 5000;
@@ -15,6 +17,7 @@ server.use(cookieParser());
 
 server.use("/auth", authRouter);
 server.use("/users", usersRouter);
+server.use("/jokes", restrict("admin"), jokesRouter);
 
 server.get("/", (req, res, next) => {
     res.json({
@@ -29,6 +32,10 @@ server.use((err, req, res, next) => {
     });
 });
 
-server.listen(PORT, () => {
-    console.log(`\n=== Server listening on port ${PORT} ===\n`);
-});
+if (!module.parent) {
+    //important to wrap server in an if if using testing
+    server.listen(PORT, () => {
+        console.log(`Running at http://localhost:${PORT}`);
+    });
+}
+module.exports = server;
